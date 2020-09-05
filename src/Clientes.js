@@ -1,7 +1,4 @@
 const Cliente = require('../models/Cliente');
-const Pedido = require('../models/Pedido');
-const Produto = require('../models/Produto');
-const PedidoProduto = require('../models/PedidoProduto');
 const { request, response } = require('express');
 const router = require('express').Router();
 
