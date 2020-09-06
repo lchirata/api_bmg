@@ -19,4 +19,6 @@ app.use(bodyParser.json())
 app.use('/clientes', clienteRouter);
 
 
-app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`))
+app.listen(process.env.PORT || 3001);
+
+// app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`))
