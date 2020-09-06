@@ -1,38 +1,22 @@
-
 const express = require ('express');
 const app = express();
-const morgan = require("morgan");
-const mongoose = require("mongoose");
+const PORT = 3001;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 require('./database/index');
 
-mongoose.connect(
-    process.env.MONGO_URL , 
-    {
-        userNewUrlParser: true,
-        // useUnifiedTopology: true
-    }
-);
 
 
 const clienteRouter = require('./src/Clientes');
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(morgan('dev'));
-// app.use(
-//   "/clientes",
-//   express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
-// );
 
 
-app.use(require("./routes"));
+
+app.use('/clientes', clienteRouter);
 
 
-// app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`))
-
-app.listen(process.env.PORT || 3000);
+app.listen(PORT, () => console.log(`Rodando na porta ${PORT}`))
